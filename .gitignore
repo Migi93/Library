@@ -217,5 +217,5 @@ buildNumber.properties
 
 #Properties
 *.properties
-/application.yaml
+**/application.yaml
 
