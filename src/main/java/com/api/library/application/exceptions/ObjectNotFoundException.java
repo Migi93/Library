@@ -2,14 +2,14 @@ package com.api.library.application.exceptions;
 
 import org.springframework.http.HttpStatus;
 
-public class EditorialNotFoundexception extends ApplicationException {
+public class ObjectNotFoundException extends ApplicationException {
     private static final String EXTERNAL_MESSAGE = "%s not found.";
 
-    public EditorialNotFoundexception() {
+    public ObjectNotFoundException() {
         super(EXTERNAL_MESSAGE, HttpStatus.BAD_REQUEST);
     }
 
-    public EditorialNotFoundexception(String variable, HttpStatus statusCode) {
+    public ObjectNotFoundException(String variable, HttpStatus statusCode) {
         super(EXTERNAL_MESSAGE, statusCode, new String[]{variable});
     }
 }

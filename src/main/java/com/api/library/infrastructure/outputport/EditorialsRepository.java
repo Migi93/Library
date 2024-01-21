@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+
 @Mapper
 public interface EditorialsRepository {
     @Select("SELECT * FROM EDITORIALES WHERE ID=#{editorialId}")
@@ -47,5 +48,6 @@ public interface EditorialsRepository {
 
     @Delete("DELETE FROM EDITORIALES WHERE ID = #{editorialId}")
     void deleteEditorial(int editorialId);
+
 
 }

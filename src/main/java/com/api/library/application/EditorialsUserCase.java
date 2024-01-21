@@ -1,8 +1,9 @@
 package com.api.library.application;
 
 import com.api.library.application.Enum.Amount;
-import com.api.library.application.exceptions.EditorialNotFoundexception;
-import com.api.library.application.exceptions.ObjectFoundException;
+import com.api.library.application.exceptions.ListIsEmptyOrNullException;
+import com.api.library.application.exceptions.ObjectNotFoundException;
+import com.api.library.application.exceptions.ObjectAlreadyExistsException;
 import com.api.library.application.utils.ValidationsUtils;
 import com.api.library.domain.entity.Editorials;
 import com.api.library.infrastructure.inputport.EditorialsInputPort;
@@ -10,14 +11,17 @@ import com.api.library.infrastructure.outputport.EditorialsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+
 @Component
 public class EditorialsUserCase implements EditorialsInputPort {
     @Autowired
     EditorialsRepository editorialsRepository;
     @Autowired
     ValidationsUtils validationsUtils;
+
     @Override
     public Editorials getEditorial(int editorialId) {
         notExistEditorial(editorialId);
@@ -64,13 +68,13 @@ public class EditorialsUserCase implements EditorialsInputPort {
 
     private void existEditorial(String nameEditorial) {
         if (editorialsRepository.existEditorial(nameEditorial) > 0) {
-            throw new ObjectFoundException("Editorial", HttpStatus.CONFLICT);
+            throw new ObjectAlreadyExistsException("Editorial", HttpStatus.CONFLICT);
         }
     }
 
     private void notExistEditorial(int editorialId) {
         if (editorialsRepository.notExistEditorial(editorialId) < 1) {
-            throw new EditorialNotFoundexception("Editorial", HttpStatus.NOT_FOUND);
+            throw new ObjectNotFoundException("Editorial", HttpStatus.NOT_FOUND);
         }
     }
 }

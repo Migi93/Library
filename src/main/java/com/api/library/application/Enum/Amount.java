@@ -1,7 +1,7 @@
 package com.api.library.application.Enum;
 
 public enum Amount {
-    AMOUNT_225(225),
+    AMOUNT_225(255),
     AMOUNT_100(100),
     AMOUNT_50(50),
     AMOUNT_20(20),

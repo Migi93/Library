@@ -1,10 +1,9 @@
 package com.api.library.application;
 
 import com.api.library.application.Enum.Amount;
-import com.api.library.application.exceptions.AtributteNotIsUniqueException;
-import com.api.library.application.exceptions.NotFoundException;
-import com.api.library.application.exceptions.EditorialNotFoundexception;
+import com.api.library.application.exceptions.ObjectNotFoundException;
 import com.api.library.application.exceptions.ListIsEmptyOrNullException;
+import com.api.library.application.exceptions.ObjectAlreadyExistsException;
 import com.api.library.application.utils.ValidationsUtils;
 import com.api.library.domain.entity.Books;
 import com.api.library.domain.entity.Editorials;
@@ -28,12 +27,12 @@ public class BooksUserCase implements BooksInputPort {
 
     @Override
     public void insertBook(Books books) {
+        existIsbn(books.getIsbn());
         validationsUtils.validateLengthAttribute(Amount.AMOUNT_100.getValue(), books.getTitle().length(), "title");
         validationsUtils.validateNotIsEmpty(books.getTitle(), "title");
         existEditorial(books.getEditorial());
         validationsUtils.validateLengthAttribute(Amount.AMOUNT_17.getValue(), books.getIsbn().length(), "isbn");
         validationsUtils.validateNotIsEmpty(books.getIsbn(), "isbn");
-        existIsbn(books.getIsbn());
         booksRepository.insertBook(books);
     }
 
@@ -45,7 +44,6 @@ public class BooksUserCase implements BooksInputPort {
 
     @Override
     public List<Books> listBooks() {
-        emptyList();
         return booksRepository.getBooks();
     }
 
@@ -68,25 +66,19 @@ public class BooksUserCase implements BooksInputPort {
 
     private void existBook(int bookId) {
         if (booksRepository.existBook(bookId) < 1) {
-            throw new NotFoundException("book", HttpStatus.NOT_FOUND);
+            throw new ObjectNotFoundException("book", HttpStatus.NOT_FOUND);
         }
     }
 
     private void existEditorial(Editorials editorials) {
         if (editorialsRepository.notExistEditorial(editorials.getEditorialId()) < 1) {
-            throw new EditorialNotFoundexception("editorial", HttpStatus.NOT_FOUND);
+            throw new ObjectNotFoundException("editorial", HttpStatus.NOT_FOUND);
         }
     }
 
     private void existIsbn(String isbn) {
         if (booksRepository.existIsbn(isbn) > 0) {
-            throw new AtributteNotIsUniqueException("isbn", HttpStatus.CONFLICT);
-        }
-    }
-
-    private void emptyList() {
-        if (booksRepository.emptyList() < 1) {
-            throw new ListIsEmptyOrNullException("books", HttpStatus.NOT_FOUND);
+            throw new ObjectAlreadyExistsException("isbn", HttpStatus.CONFLICT);
         }
     }
 }

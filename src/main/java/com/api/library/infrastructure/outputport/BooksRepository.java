@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
+
 @Mapper
 public interface BooksRepository {
     @Insert("INSERT INTO LIBROS (TITULO, EDITORIAL_ID, FECHA_PUBLICACION, ISBN) VALUES (#{title}, #{editorial.editorialId}, #{publicationDate, jdbcType=DATE}, "
@@ -52,9 +53,6 @@ public interface BooksRepository {
 
     @Select("SELECT COUNT(ISBN) FROM LIBROS WHERE ISBN = #{isbn}")
     int existIsbn(String isbn);
-
-    @Select("SELECT COUNT(*) FROM LIBROS")
-    int emptyList();
 
     @Update("UPDATE LIBROS SET TITULO = #{title}, EDITORIAL_ID = #{editorial.editorialId}, FECHA_PUBLICACION = #{publicationDate, jdbcType=DATE}, ISBN = #{isbn} " +
             "WHERE ID = #{bookId}")
