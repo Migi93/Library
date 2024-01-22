@@ -1,0 +1,26 @@
+# Descomentando la línea siguiente, se usará la conexión JDBC para MariaDB
+# spring.datasource.url: jdbc:mariadb://localhost:3306/biblioteca
+# Descomentando la línea siguiente, se usará la conexión JDBC para Oracle
+# spring.datasource.url: jdbc:oracle:thin:@192.168.1.37:1521/XEPDB1
+# Descomentando las dos líneas siguientes, se habilita el mapeo con Hibernate
+# spring.jpa.hibernate.ddl-auto: update
+# spring.jpa.database-platform: org.hibernate.dialect.Oracle19cDialect
+
+spring:
+  main:
+    banner-mode: off
+  # Configuración para conexión con Oracle utilizando Docker
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521/ORCLCDB
+    username: BIBLIOTECA
+    password: biblioteca
+
+server:
+  port: 8080
+
+spring-doc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    
