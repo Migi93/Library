@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.outputport;
 
-import com.api.library.domain.entity.Editorials;
+import com.api.library.domain.model.Editorials;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

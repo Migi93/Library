@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.inputport;
 
-import com.api.library.domain.entity.Editorials;
+import com.api.library.domain.model.Editorials;
 
 import java.util.List;
 

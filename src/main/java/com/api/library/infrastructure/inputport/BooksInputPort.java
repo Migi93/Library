@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.inputport;
 
-import com.api.library.domain.entity.Books;
+import com.api.library.domain.model.Books;
 
 import java.util.List;
 

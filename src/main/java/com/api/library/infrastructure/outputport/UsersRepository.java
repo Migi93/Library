@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.outputport;
 
-import com.api.library.domain.entity.Users;
+import com.api.library.domain.model.Users;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

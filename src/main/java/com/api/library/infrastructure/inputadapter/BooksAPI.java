@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.inputadapter;
 
-import com.api.library.domain.entity.Books;
+import com.api.library.domain.model.Books;
 import com.api.library.infrastructure.inputport.BooksInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

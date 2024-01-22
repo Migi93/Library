@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.inputadapter;
 
-import com.api.library.domain.entity.Editorials;
+import com.api.library.domain.model.Editorials;
 import com.api.library.infrastructure.inputport.EditorialsInputPort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

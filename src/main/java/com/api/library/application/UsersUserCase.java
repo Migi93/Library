@@ -1,10 +1,10 @@
 package com.api.library.application;
 
-import com.api.library.Enum.Amount;
+import com.api.library.application.Enum.Amount;
 import com.api.library.application.exceptions.ObjectAlreadyExistsException;
 import com.api.library.application.exceptions.ObjectNotFoundException;
 import com.api.library.application.utils.ValidationsUtils;
-import com.api.library.domain.entity.Users;
+import com.api.library.domain.model.Users;
 import com.api.library.infrastructure.inputport.UsersInputPort;
 import com.api.library.infrastructure.outputport.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;

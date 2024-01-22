@@ -1,4 +1,4 @@
-package com.api.library.Enum;
+package com.api.library.application.Enum;
 
 public enum Amount {
     AMOUNT_225(255),

@@ -1,6 +1,6 @@
 package com.api.library.infrastructure.inputport;
 
-import com.api.library.domain.entity.Users;
+import com.api.library.domain.model.Users;
 
 import java.util.List;
 
