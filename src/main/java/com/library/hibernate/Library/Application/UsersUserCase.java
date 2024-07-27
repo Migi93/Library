@@ -55,6 +55,7 @@ public class UsersUserCase implements UsersInputPort{
     }
 
     @Override
+    @Transactional
     public void deleteUser(String dni) {
         this.usersRepository.deleteByDni(dni);
     }
